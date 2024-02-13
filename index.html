@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <!-- fav-icon link -->
+    <link rel="icon" type="image/png" href="./image/icons8-to-do-list-64.png">
+    <!-- css link -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <div class="Backtolists">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill: #aeaed6ff;"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            <p>Back to lists</p>
+        </div>
+        <div class="today">
+            <h1>today</h1>
+            <button class="plus">+</button>
+        </div>
+        <div class="meter">
+            <div class="big">
+                <div class="small">
+                </div>
+            </div>
+            <p>33% complete</p>
+        </div>
+        <div class="wrapper">
+            <checklist-item checked>Meditation</checklist-item>
+            <checklist-item>Pick up Anna</checklist-item>
+            <checklist-item>Set up meeting with Jay</checklist-item>
+            <checklist-item>Finish Daily Ui</checklist-item>
+            <checklist-item>Second edits on article</checklist-item>
+            <checklist-item checked>Email Chris</checklist-item>
+        </div>
+
+        <section class="recurring">
+            <p>Pull from recurring lists</p>
+            <div class="select1">
+                <recurring-button color="yellow">Daily</recurring-button>
+                <recurring-button color="green">Weekly</recurring-button>
+            </div>
+            <div class="select2">
+                <recurring-button color="pink">Monthly</recurring-button>
+                <recurring-button color="blue">Occasional</recurring-button>
+            </div>
+        </section>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
+
