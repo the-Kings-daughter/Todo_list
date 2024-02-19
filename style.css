@@ -46,10 +46,10 @@ main {
     margin-bottom: 15px;
     background-color: #e5e5f5;
     display: none;
+    width: 100%;
 }
 
  input {
-    flex: 1;
     border: none;
     outline: none;
     background: transparent;
@@ -58,13 +58,12 @@ main {
 .btn {
     border: none;
     outline: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: #c4c4f2ff;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
     border-radius: 15px;
-    /* margin-left: 30px;git */
 }
 .plus {
     width: 38px;
