@@ -22,7 +22,11 @@
         </div>
         <div class="today">
             <h1>today</h1>
-            <button class="plus">+</button>
+            <button class="plus" onclick="showInput()">+</button>
+        </div>
+        <div id="row">
+            <input type="text" placeholder="add your text" id="input-box">
+            <button class="btn" onclick="addTask()">Add</button>
         </div>
         <div class="meter">
             <div class="big">
@@ -31,7 +35,8 @@
             </div>
             <p>33% complete</p>
         </div>
-        <div class="wrapper">
+        <div id="wrapper">
+            <li class="uncheck"></li>
             <checklist-item checked>Meditation</checklist-item>
             <checklist-item>Pick up Anna</checklist-item>
             <checklist-item>Set up meeting with Jay</checklist-item>

@@ -1,3 +1,4 @@
+
 const template = document.createElement("template")
 template.innerHTML = `
 <style>
@@ -17,7 +18,7 @@ template.innerHTML = `
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the SVG */
+    justify-content: center; 
 }
 .uncheck:hover {
     background-color: #b5ea81;
@@ -41,94 +42,132 @@ template.innerHTML = `
 </div>
 `;
 
+
 class CheckListItem extends HTMLElement {
-    name = 'checklist-item'
-    constructor() {
-        super();
-        this.shadow = this.attachShadow({mode: 'open'});
-        this.shadow.appendChild(template.content.cloneNode(true));
+  name = 'checklist-item'
+  constructor() {
+    super();
+    
+    this.shadow = this.attachShadow({mode: 'open'});
+    this.shadow.appendChild(template.content.cloneNode(true));
 
-        const checklist = this.shadow.querySelector('.checklist');
-        checklist.addEventListener('click', () => this.toggleChecked());
-    }
-    toggleChecked() {
-        this.hasAttribute('checked') ?
-            this.removeAttribute('checked') :
-            this.setAttribute('checked', '');
-    }
-    updateProgressBar() {
-        const checklistItems = this.shadow.querySelectorAll('.checklist-item');
-        const totalItems = checklistItems.length;
-        const checkedItems = Array.from(checklistItems).filter(item => item.hasAttribute('checked')).length;
-        const completionPercentage = (checkedItems / totalItems) * 100;
+    const checklist = this.shadow.querySelector('.checklist');
+    checklist.addEventListener('click', () => this. toggleChecked());
 
-        const progressBar = this.shadow.querySelector('.small');
-        progressBar.style.width = `${completionPercentage}%`;
+    const checklistItems = document.querySelectorAll('checklist-item');
+    checklistItems.forEach(item => item.updateProgressBar());
 
-        const progressBarText = this.shadow.querySelector('.meter p');
-        progressBarText.textContent = `${Math.round(completionPercentage)}% complete`;
-    }
+  }
+  toggleChecked() {
+    this.hasAttribute('checked') ?
+    this.removeAttribute('checked') :
+    this.setAttribute('checked', '');
+              
+  }
+  updateProgressBar() {
+    const checklistItems = this.shadow.querySelectorAll('.checklist-item');
+    const totalItems = checklistItems.length;
+    const checkedItems = Array.from(checklistItems).filter(item => item.hasAttribute('checked')).length;
+    const completionPercentage = (checkedItems / totalItems) * 100;
+    // console.log(completionPercentage);
+
+    const progressBar = this.shadow.querySelector('.big .small');
+    progressBar.style.width = `${completionPercentage}%`;
+
+    // console.log (progressBar.style.width);
+
+    const progressBarText = this.shadow.querySelector('.meter p');
+    progressBarText.textContent = `${Math.round(completionPercentage)}% complete`;
+    // console.log(updateProgressBar)
+  }
+  
 }
+
+
 
 class RecurringButton extends HTMLElement {
-    name = 'recurring-button'
-    constructor() {
-        super();
-        this.shadow = this.attachShadow({mode: 'open'});
+  name = 'recurring-button'
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({mode: 'open'});
+  }
+
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+    <style>
+      button {
+      width: 140px;
+      height: 40px;
+      border-radius: 20px;
+      font-size: 16px;
     }
 
-    connectedCallback() {
-        this.shadowRoot.innerHTML = `
-        <style>
-          button {
-            width: 140px;
-            height: 40px;
-            border-radius: 20px;
-            font-size: 16px;
-          }
-
-          :host([color="yellow"]) button {
-            background-color: #f5ed84;
-            color: #b5b179ff;
-            border: none;
-          }
-
-          :host([color="green"]) button {
-            background-color: #b5ea81;
-            color: #8ca376ff;
-            border: none;
-          }
-
-          :host([color="pink"]) button {
-            background-color: #f8aaaa;
-            color: #a38686ff;
-            border: none;
-          }
-
-          :host([color="blue"]) button {
-            background-color: #b3b3ef;
-            color: #88889eff;
-            border: none;
-          }
-        </style>
-        <button><slot></slot></button>
-        `;
-
-        const checklistItems = this.shadow.querySelectorAll('.checklist-item');
-        checklistItems.forEach(checklistItem => {
-            checklistItem.addEventListener('click', () => {
-                checklistItem.toggleChecked();
-                this.updateProgressBar();
-            });
-        });
-        this.updateProgressBar();
+    :host([color="yellow"]) button {
+      background-color: #f5ed84;
+      color: #b5b179ff;
+      border: none;
     }
-}
 
+    :host([color="green"]) button {
+      background-color: #b5ea81;
+      color: #8ca376ff;
+      border: none;
+    }
 
+    :host([color="pink"]) button {
+      background-color: #f8aaaa;
+      color: #a38686ff;
+      border: none;
+    }
+
+    :host([color="blue"]) button {
+      background-color: #b3b3ef;
+      color: #88889eff;
+      border: none;
+    }
+  </style>
+  <button><slot></slot></button>
+  `;
+  }
+} 
 
 customElements.define('checklist-item', CheckListItem);
 customElements.define('recurring-button', RecurringButton);
+
+const inputBox = document.getElementById('input-box');
+const wrapper = document.getElementById('wrapper')
+
+function addTask() {
+  if (inputBox.value === '') {
+    alert('You must write something!')
+  } else {
+    let newItem = document.createElement('li');
+    newItem.getAttribute
+    newItem.innerHTML = inputBox.value;
+    wrapper.appendChild(newItem);
+  }
+}
+
+let row = document.getElementById('row');
+let isClicked = true;
+
+
+function showInput() {
+  if (isClicked) {
+    row.style.display = 'block';
+    isClicked = false;
+  }else {
+    row.style.display = 'none';
+    isClicked = true;
+  }
+  
+  
+}
+
+
+
+
+
 
 
 
