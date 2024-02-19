@@ -39,14 +39,15 @@ main {
     padding-left: 0.5rem;
 } 
 #row {
+    display: none;
+}
+.cont {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 30px;
     margin-bottom: 15px;
     background-color: #e5e5f5;
-    display: none;
-    width: 100%;
 }
 
  input {
@@ -54,6 +55,7 @@ main {
     outline: none;
     background: transparent;
     padding: 10px;
+   
 }
 .btn {
     border: none;
